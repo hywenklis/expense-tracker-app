@@ -44,12 +44,12 @@ const HomeScreen = ({ navigation }) => {
         )
         setTotalIncome(
           snapshot.docs.map((doc) =>
-            doc.data().email === currentUser.email && doc.data().type === 'income' ? doc.data().price : 0
+            doc.data().email === auth.currentUser?.email && doc.data().type === 'income' ? doc.data().price : 0
           )
         )
         setTotalExpense(
           snapshot.docs.map((doc) =>
-            doc.data().email === currentUser.email && doc.data().type === 'expense' ? doc.data().price : 0
+            doc.data().email === auth.currentUser?.email && doc.data().type === 'expense' ? doc.data().price : 0
           )
         )
       }
@@ -94,7 +94,7 @@ const HomeScreen = ({ navigation }) => {
     if (transactions) {
       setFilter(
         transactions.filter(
-          (transaction) => transaction.data.email === currentUser.email
+          (transaction) => transaction.data.email === auth.currentUser?.email
         )
       )
     }
@@ -115,7 +115,7 @@ const HomeScreen = ({ navigation }) => {
           <View style={{ marginLeft: 10 }}>
             <Text style={{ fontWeight: 'bold' }}>Welcome</Text>
             <Text h4 style={{ color: '#4A2D5D' }}>
-              {currentUser?.displayName}
+              {auth.currentUser.displayName}
             </Text>
           </View>
         </View>

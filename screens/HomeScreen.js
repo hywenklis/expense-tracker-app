@@ -6,6 +6,7 @@ import { getFirestore, collection, orderBy, onSnapshot } from 'firebase/firestor
 import { StatusBar } from 'expo-status-bar'
 import { AntDesign, Feather, FontAwesome5 } from '@expo/vector-icons'
 import CustomListItem from '../components/CustomListItem'
+import { color } from 'react-native-elements/dist/helpers'
 
 const HomeScreen = ({ navigation }) => {
   const auth = getAuth()
@@ -53,7 +54,6 @@ const HomeScreen = ({ navigation }) => {
         )
       }
     )
-
     return unsubscribe
   }, [])
 
@@ -129,29 +129,30 @@ const HomeScreen = ({ navigation }) => {
           </View>
           <View style={styles.cardBottom}>
             <View>
-              <View style={styles.cardBottomSame}>
-                <Feather name='arrow-down' size={18} color='green' />
+              <View style={{ flexDirection: 'row', padding: 10 }}>
+                <Feather name='arrow-up' size={18} color='#35c44b' />
                 <Text
                   style={{
                     textAlign: 'center',
                     marginLeft: 5,
+                    color: '#35c44b',
                   }}
                 >
                   Renda
                 </Text>
               </View>
-              <Text h4 style={{ textAlign: 'center' }}>
+              <Text h4 style={{ textAlign: 'center', color: '#d1edce' }}>
                 {`R$ ${income?.toFixed(2)}`}
               </Text>
             </View>
             <View>
-              <View style={styles.cardBottomSame}>
-                <Feather name='arrow-up' size={18} color='red' />
-                <Text style={{ textAlign: 'center', marginLeft: 5 }}>
+              <View style={{ flexDirection: 'row', padding: 10, justifyContent: 'flex-end' }}>
+                <Text style={{ textAlign: 'center', marginRight: 5, color: '#db0d29' }}>
                   Despesa
                 </Text>
+                <Feather name='arrow-down' size={18} color='#db0d29' />
               </View>
-              <Text h4 style={{ textAlign: 'center' }}>
+              <Text h4 style={{ textAlign: 'center', color: '#edced5' }}>
                 {`R$ ${expense?.toFixed(2)}`}
               </Text>
             </View>
@@ -220,96 +221,132 @@ export default HomeScreen
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
     flex: 1,
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-    padding: 10,
+    backgroundColor: '#F5F5F5',
+    padding: 20,
   },
   fullName: {
     flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  avatar: {
+    marginRight: 10,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+  },
+  greetingContainer: {
+    flex: 1,
+  },
+  greetingText: {
+    fontWeight: 'bold',
+    fontSize: 16,
+    color: '#4A2D5D',
+  },
+  userName: {
+    fontSize: 24,
+    color: '#4A2D5D',
   },
   card: {
-    backgroundColor: '#535F93',
-    alignItems: 'center',
-    width: '100%',
-    padding: 10,
+    backgroundColor: '#6f3499',
     borderRadius: 10,
+    padding: 20,
+    marginBottom: 20,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.23,
-    shadowRadius: 2.62,
-    elevation: 4,
-    marginVertical: 20,
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    elevation: 2,
   },
   cardTop: {
-    // backgroundColor: 'blue',
     marginBottom: 20,
+  },
+  cardTitle: {
+    textAlign: 'center',
+    fontSize: 14,
+    color: '#FFFFFF',
+    marginBottom: 10,
+  },
+  cardAmount: {
+    textAlign: 'center',
+    fontSize: 28,
+    color: '#FFFFFF',
+    borderWidth: 2,
+    borderColor: '#4A2D5D',
+    padding: 10,
+    borderRadius: 10,
   },
   cardBottom: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    width: '100%',
-    margin: 'auto',
-    backgroundColor: '#E0D1EA',
-    borderRadius: 5,
   },
-  cardBottomSame: {
-    flexDirection: 'row',
-    justifyContent: 'center',
+  cardBottomItem: {
     alignItems: 'center',
+  },
+  cardBottomText: {
+    textAlign: 'center',
+    fontSize: 16,
+    color: '#4A2D5D',
   },
   recentTitle: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    width: '100%',
-  },
-  recentTransactions: {
-    backgroundColor: 'white',
-    width: '100%',
+    marginBottom: 10,
   },
   seeAll: {
     fontWeight: 'bold',
-    color: 'green',
+    color: '#308c26',
     fontSize: 16,
+  },
+  recentTransactions: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 10,
+    padding: 20,
+  },
+  transactionItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  transactionIcon: {
+    marginRight: 10,
+  },
+  transactionText: {
+    flex: 1,
+    fontSize: 16,
+    color: '#4A2D5D',
+  },
+  containerNull: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  noTransactionsText: {
+    marginTop: 10,
+    color: '#4A2D5D',
+    fontSize: 18,
   },
   addButton: {
     position: 'absolute',
     bottom: 0,
-    padding: 10,
-    backgroundColor: 'white',
+    left: 0,
+    right: 0,
+    backgroundColor: '#FFFFFF',
+    padding: 20,
     flexDirection: 'row',
     justifyContent: 'space-around',
-    width: '100%',
     alignItems: 'center',
     shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 12,
-    },
-    shadowOpacity: 0.58,
-    shadowRadius: 16.0,
-
-    elevation: 24,
+    shadowOffset: { width: 0, height: -2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    elevation: 2,
   },
   plusButton: {
-    backgroundColor: '#535F93',
-    padding: 10,
+    backgroundColor: '#4A2D5D',
+    padding: 18,
     borderRadius: 50,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 12,
-    },
-    shadowOpacity: 0.58,
-    shadowRadius: 16.0,
-    elevation: 24,
   },
-  containerNull: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    width: '100%',
-  },
-})
+});

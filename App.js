@@ -23,8 +23,8 @@ export default function App() {
 
   const globalScreenOptions = {
     headerStyle: {
-      backgroundColor: '#DDD5F1',
-      // backgroundColor: '#51A3B1',
+      // backgroundColor: '#DDD5F1',
+      backgroundColor: '#ccded6',
     },
     headerTitleStyle: {
       color: '#000000',

@@ -34,12 +34,12 @@ const RegisterScreen = ({navigation}) => {
         })
         .catch((err) => alert(err.message) & setSubmitLoading(false))
     } else {
-      alert('All fields are mandatory')
+      alert('Todos os campos são obrigatórios')
       setSubmitLoading(false)
     }
   }
   const clearInputFields = () => {
-    alert('Successfully Created Account')
+    alert('Conta criada com sucesso')
     navigation.replace('Home')
     setSubmitLoading(false)
     setFullName('')
@@ -62,7 +62,7 @@ const RegisterScreen = ({navigation}) => {
       </Text>
       <View style={styles.inputContainer}>
         <Input
-          placeholder='Full Name'
+          placeholder='Nome'
           type='text'
           autoFocus
           value={fullName}
@@ -76,7 +76,7 @@ const RegisterScreen = ({navigation}) => {
           onChangeText={(text) => setEmail(text)}
         />
         <Input
-          placeholder='Password'
+          placeholder='Senha'
           type='text'
           
           value={password}
@@ -84,7 +84,7 @@ const RegisterScreen = ({navigation}) => {
           onChangeText={(text) => setPassword(text)}
         />
         <Input
-          placeholder='Profile Picture Url (Optional)'
+          placeholder='Foto do perfil Url (Opcional)'
           type='text'
          
           value={imageUrl}
@@ -94,7 +94,7 @@ const RegisterScreen = ({navigation}) => {
       </View>
       <Button
         containerStyle={styles.button}
-        title='Register'
+        title='Cadastrar'
         onPress={signUp}
         loading={submitLoading}
       />

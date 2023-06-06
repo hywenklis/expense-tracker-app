@@ -16,12 +16,12 @@ const LoginScreen = ({ navigation }) => {
         .then(() => clearInputFields())
         .catch((error) => alert(error.message) & setSubmitLoading(false))
     } else {
-      alert('All fields are mandatory')
+      alert('Todos os campos são obrigatórios')
       setSubmitLoading(false)
     }
   }
   const clearInputFields = () => {
-    alert('Successfully Logged in')
+    alert('Login realizado com sucesso')
     navigation.replace('Home')
     setSubmitLoading(false)
     setEmail('')
@@ -73,7 +73,7 @@ const LoginScreen = ({ navigation }) => {
             <Input
               type='password'
               secureTextEntry
-              placeholder='Password'
+              placeholder='Senha'
               value={password}
               onChangeText={(text) => setPassword(text)}
               onSubmitEditing={signIn}
@@ -82,13 +82,13 @@ const LoginScreen = ({ navigation }) => {
           <Button
             loading={submitLoading}
             containerStyle={styles.button}
-            title='Login'
+            title='Entrar'
             onPress={signIn}
           />
           <Button
             onPress={() => navigation.navigate('Register')}
             containerStyle={styles.button}
-            title='Register'
+            title='Cadastrar'
             type='outline'
           />
           <View style={{ height: 50 }}></View>

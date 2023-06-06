@@ -10,7 +10,7 @@ import { FontAwesome5 } from '@expo/vector-icons'
 const AllTransactions = ({ navigation }) => {
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: 'All Transactions',
+      title: 'Transações',
     })
   }, [])
   const [transactions, setTransactions] = useState([])

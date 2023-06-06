@@ -13,7 +13,7 @@ const AddScreen = ({ navigation }) => {
   const [submitLoading, setSubmitLoading] = useState(false);
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: 'Add Expense',
+      title: 'Adicionar Finanças',
     });
   }, [navigation]);
   const [input, setInput] = useState('');
@@ -35,13 +35,13 @@ const AddScreen = ({ navigation }) => {
         .then(() => clearInputFields())
         .catch((error) => alert(error.message));
     } else {
-      alert('All fields are mandatory');
+      alert('Todos os campos são obrigatórios');
       setSubmitLoading(false);
     }
   };
 
   const clearInputFields = () => {
-    alert('Created Successfully');
+    alert('Criado com sucesso');
     setInput('');
     setAmount('');
     setSelDate(new Date());
@@ -76,7 +76,7 @@ const AddScreen = ({ navigation }) => {
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
-          placeholder='Add Text'
+          placeholder='Adicione a descrição'
           value={input}
           onChangeText={(text) => setInput(text)}
         />
@@ -95,14 +95,14 @@ const AddScreen = ({ navigation }) => {
         <TextInput
           style={styles.input}
           keyboardType='numeric'
-          placeholder='Add Amount'
+          placeholder='Adicione o valor'
           value={amount}
           onChangeText={(text) => setAmount(text)}
         />
 
         <Text
           style={styles.input}
-          placeholder='Select Date'
+          placeholder='Selecione a data'
           value={result}
           onPress={showDatepicker}
         // editable={false}
@@ -115,13 +115,13 @@ const AddScreen = ({ navigation }) => {
             setSelectedLanguage(itemValue)
           }
         >
-          <Picker.Item label='Expense' value='expense' />
-          <Picker.Item label='Income' value='income' />
+          <Picker.Item label='Despesa' value='expense' />
+          <Picker.Item label='Renda' value='income' />
         </Picker>
 
         <Button
           containerStyle={styles.button}
-          title='Add'
+          title='Adicionar'
           onPress={createExpense}
           loading={submitLoading}
         />

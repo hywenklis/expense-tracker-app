@@ -13,7 +13,7 @@ const UpdateScreen = ({ route, navigation }) => {
   const [submitLoading, setSubmitLoading] = useState(false);
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: 'Update Expense',
+      title: 'Atualizar Finanças',
     });
   }, [navigation]);
   const [input, setInput] = useState('');
@@ -48,12 +48,12 @@ const UpdateScreen = ({ route, navigation }) => {
         .catch((error) => alert(error.message));
     } else {
       setSubmitLoading(false);
-      alert('All fields are mandatory');
+      alert('Todos os campos são obrigatórios');
     }
   };
 
   const clearInputFields = () => {
-    alert('Updated Successfully');
+    alert('Atualizado com sucesso');
     setInput('');
     setAmount('');
     setSelDate(new Date());
@@ -90,7 +90,7 @@ const UpdateScreen = ({ route, navigation }) => {
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
-          placeholder="Add Text"
+          placeholder="Adicionar descrição"
           value={input}
           onChangeText={(text) => setInput(text)}
         />
@@ -109,7 +109,7 @@ const UpdateScreen = ({ route, navigation }) => {
         <TextInput
           style={styles.input}
           keyboardType="numeric"
-          placeholder="Add Amount"
+          placeholder="Adicionar valor"
           value={amount}
           onChangeText={(text) => setAmount(text)}
         />
@@ -124,13 +124,13 @@ const UpdateScreen = ({ route, navigation }) => {
             setSelectedLanguage(itemValue)
           }
         >
-          <Picker.Item label="Expense" value="expense" />
-          <Picker.Item label="Income" value="income" />
+          <Picker.Item label="Despesa" value="expense" />
+          <Picker.Item label="Renda" value="income" />
         </Picker>
 
         <Button
           containerStyle={styles.button}
-          title="Update"
+          title="Atualizar"
           onPress={updateExpense}
           loading={submitLoading}
         />

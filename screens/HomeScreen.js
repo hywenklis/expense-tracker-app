@@ -9,7 +9,6 @@ import CustomListItem from '../components/CustomListItem'
 
 const HomeScreen = ({ navigation }) => {
   const auth = getAuth()
-  const db = getFirestore()
   const signOutUser = () => {
     signOut(auth)
       .then(() => navigation.replace('Login'))
@@ -17,11 +16,11 @@ const HomeScreen = ({ navigation }) => {
   }
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: 'Expense Tracker',
+      title: 'Finanças',
       headerRight: () => (
         <View style={{ marginRight: 20 }}>
           <TouchableOpacity activeOpacity={0.5} onPress={signOutUser}>
-            <Text style={{ fontWeight: 'bold' }}>Logout</Text>
+            <Text style={{ fontWeight: 'bold' }}>Sair</Text>
           </TouchableOpacity>
         </View>
       ),
@@ -113,7 +112,7 @@ const HomeScreen = ({ navigation }) => {
             }}
           />
           <View style={{ marginLeft: 10 }}>
-            <Text style={{ fontWeight: 'bold' }}>Welcome</Text>
+            <Text style={{ fontWeight: 'bold' }}>Bem vindo</Text>
             <Text h4 style={{ color: '#4A2D5D' }}>
               {auth.currentUser.displayName}
             </Text>
@@ -122,10 +121,10 @@ const HomeScreen = ({ navigation }) => {
         <View style={styles.card}>
           <View style={styles.cardTop}>
             <Text style={{ textAlign: 'center', color: 'aliceblue' }}>
-              Total Balance
+              Saldo Total
             </Text>
             <Text h3 style={{ textAlign: 'center', color: 'aliceblue' }}>
-              $ {totalBalance.toFixed(2)}
+              R$ {totalBalance.toFixed(2)}
             </Text>
           </View>
           <View style={styles.cardBottom}>
@@ -138,22 +137,22 @@ const HomeScreen = ({ navigation }) => {
                     marginLeft: 5,
                   }}
                 >
-                  Income
+                  Renda
                 </Text>
               </View>
               <Text h4 style={{ textAlign: 'center' }}>
-                {`$ ${income?.toFixed(2)}`}
+                {`R$ ${income?.toFixed(2)}`}
               </Text>
             </View>
             <View>
               <View style={styles.cardBottomSame}>
                 <Feather name='arrow-up' size={18} color='red' />
                 <Text style={{ textAlign: 'center', marginLeft: 5 }}>
-                  Expense
+                  Despesa
                 </Text>
               </View>
               <Text h4 style={{ textAlign: 'center' }}>
-                {`$ ${expense?.toFixed(2)}`}
+                {`R$ ${expense?.toFixed(2)}`}
               </Text>
             </View>
           </View>
@@ -161,13 +160,13 @@ const HomeScreen = ({ navigation }) => {
 
         <View style={styles.recentTitle}>
           <Text h4 style={{ color: '#4A2D5D' }}>
-            Recent Transactions
+            Últimas Atualizações
           </Text>
           <TouchableOpacity
             activeOpacity={0.5}
             onPress={() => navigation.navigate('All')}
           >
-            <Text style={styles.seeAll}>See All</Text>
+            <Text style={styles.seeAll}>Todos</Text>
           </TouchableOpacity>
         </View>
 

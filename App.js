@@ -4,7 +4,7 @@ import React from 'react'
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
 import { initializeApp } from 'firebase/app';
-import { firebaseConfig } from './firebaseconfig'
+import { firebaseConfig } from './config/firebaseconfig'
 
 // pages
 import HomeScreen from './screens/HomeScreen'
